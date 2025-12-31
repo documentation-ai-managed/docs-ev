@@ -1,0 +1,124 @@
+---
+title: Exploring Zefir's Features
+description: Learn about the core capabilities of the Zefir Fun Chatbot, from humorous responses to interactive games.
+---
+
+## Overview
+
+Zefir delivers fun, engaging interactions through its core features. You can enjoy witty humor, dive into role-playing scenarios, play built-in games, and tailor the experience to your preferences. These capabilities make every conversation lively and personalized.
+
+<Columns cols={3}>
+  <Card title="Humor Mechanisms" icon="smile" href="#humor">
+    Discover how Zefir crafts jokes and puns on the fly.
+  </Card>
+  <Card title="Role-Playing" icon="user" href="#role-playing">
+    Immerse yourself in themed chats and stories.
+  </Card>
+  <Card title="Games & Quizzes" icon="gamepad-2" href="#games">
+    Challenge Zefir to trivia or interactive adventures.
+  </Card>
+</Columns>
+
+## Response Styles and Humor Mechanisms
+
+Zefir adapts its tone to keep chats entertaining. Choose from styles like sarcastic, punny, or enthusiastic to match your mood.
+
+<Tabs>
+  <Tab title="Sarcastic" icon="alert-triangle">
+    Trigger sarcasm with phrases like "Be sarcastic about this."
+
+    ```
+    User: Tell me a joke
+    Zefir: Oh sure, because your life isn't depressing enough already. Why did the scarecrow win an award? He was outstanding in his field. 🙄
+    ```
+  </Tab>
+  <Tab title="Punny" icon="zap">
+    Request puns for wordplay fun.
+
+    ```
+    User: Hit me with a pun
+    Zefir: Time flies like an arrow; fruit flies like a banana. 🍌
+    ```
+  </Tab>
+  <Tab title="Enthusiastic" icon="sparkles">
+    Get high-energy responses.
+
+    ```
+    User: What's up?
+    Zefir: EVERYTHING IS AWESOME! Let's conquer the day! 🚀
+    ```
+  </Tab>
+</Tabs>
+
+<Callout kind="tip">
+  Mix styles mid-conversation by saying "Switch to punny mode" for dynamic humor.
+</Callout>
+
+## Engaging in Themed Conversations and Role-Playing
+
+Immerse yourself in stories or scenarios. Zefir maintains context across turns, building narratives dynamically.
+
+<Steps>
+  <Step title="Start a Theme" icon="play">
+    Type "Let's role-play as pirates" to begin.
+  </Step>
+  <Step title="Interact" icon="message-circle">
+    Respond naturally: "Captain, what do we do next?"
+  </Step>
+  <Step title="Evolve the Story" icon="trending-up">
+    Add twists like "Suddenly, a storm hits!" Zefir adapts.
+  </Step>
+  <Step title="End or Switch" icon="stop-circle">
+    Say "End role-play" or pivot to a new theme.
+  </Step>
+</Steps>
+
+## Discovering Built-in Games and Quizzes
+
+Zefir packs mini-games like trivia, riddles, and guess-the-word. Start with commands like "Play trivia" or "Riddle me this."
+
+<CodeGroup tabs="Trivia,Riddle">
+  ````bash
+  User: Play trivia
+  Zefir: Category: Science. What planet is closest to the Sun? A) Venus B) Mercury
+  User: B
+  Zefir: Correct! +1 point. Next: Who invented the telephone?
+  ````
+  ````bash
+  User: Riddle me this
+  Zefir: I speak without a mouth and hear without ears. I have no body, but I come alive with the wind. What am I?
+  User: Echo
+  Zefir: Spot on! Want another?
+  ````
+</CodeGroup>
+
+## Customizing Chat Preferences
+
+Tailor Zefir to your style. Use simple commands or integrate via API for apps.
+
+<Expandable title="Advanced Customization" default-open="false">
+  Set preferences like humor level or themes.
+
+  ```javascript
+  // Example: Embed Zefir with custom config
+  const zefirConfig = {
+    humorLevel: 'high',
+    defaultTheme: 'pirates',
+    apiKey: 'YOUR_API_KEY'
+  };
+
+  ZefirChat.init(zefirConfig);
+  ```
+
+  Adjust on-the-fly: "Set humor to medium" or "Prefer sci-fi themes."
+</Expandable>
+
+| Preference | Command Example | Effect |
+|------------|-----------------|--------|
+| Humor Level | "Set humor low" | Tames sarcasm |
+| Theme Bias | "Favor fantasy" | More magic stories |
+| Response Length | "Short replies" | Concise chats |
+
+<Callout kind="success">
+  Experiment freely—Zefir remembers preferences across sessions for seamless fun.
+</Callout>

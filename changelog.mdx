@@ -1,0 +1,139 @@
+---
+title: Changelog
+description: Track the latest updates and improvements to the EV Zefir Fun Chatbot.
+---
+
+## Recent Updates
+
+Stay informed about new features, bug fixes, and improvements to EV Zefir Fun Chatbot. You receive automatic updates when available. Check this page regularly for the latest version details.
+
+<Update label="2024-10-15" description="v1.3.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added five new humor packs: Dad Jokes, Puns, Sci-Fi Wit, Animal Antics, and Tech Roasts. Access them via the `/humor pack-name` command.
+- Introduced customizable response delays for more natural conversations. Set with `delay: 500ms` in your config.
+
+## Improvements
+
+- Enhanced conversation memory to retain context across 50+ exchanges.
+- Optimized token usage, reducing costs by up to 20% for long sessions.
+
+## Bug Fixes
+
+- Fixed intermittent crashes during high-load emoji processing.
+- Resolved issue where custom humor packs failed to load on restart.
+
+</Update>
+
+<Update label="2024-09-20" description="v1.2.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- Voice mode integration: Responds with audio clips using `voice: true` in requests.
+- Multi-language support for humor packs in English, Spanish, and French.
+
+## Bug Fixes
+
+- Patched security vulnerability in webhook validation (CVE-2024-5678).
+- Corrected parsing errors for complex user inputs with nested emojis.
+
+## Improvements
+
+- UI dashboard now shows real-time humor pack usage stats.
+
+</Update>
+
+<Update label="2024-08-10" description="v1.1.0" tags={["feature", "breaking"]}>
+
+## New Features
+
+- Core humor engine with initial packs: Classic, Sarcasm, and Riddles.
+- Webhook support for integrating EV into your apps at `https://your-webhook-url.com/webhook`.
+
+## Breaking Changes
+
+- Updated API endpoint from `/chat` to `/zefir-chat` for better versioning.
+
+## Bug Fixes
+
+- Initial stability fixes for session timeouts.
+
+</Update>
+
+## Upcoming Roadmap
+
+EV Zefir Fun Chatbot evolves based on your feedback. Here's what's coming next:
+
+<Columns cols={3}>
+
+<Card title="AI Personalization" icon="brain" href="#">
+
+Train the bot on your humor style for unique responses.
+
+</Card>
+
+<Card title="Group Chat Mode" icon="users" href="#">
+
+Handle multi-user conversations with context awareness.
+
+</Card>
+
+<Card title="Visual Memes" icon="image" href="#">
+
+Generate and share custom memes in chats.
+
+</Card>
+
+</Columns>
+
+<Callout kind="info">
+
+Watch this space for beta access announcements.
+
+</Callout>
+
+## Report Issues and Suggest Features
+
+Help shape EV's future. Follow these steps to report bugs or request features:
+
+<Steps>
+
+<Step title="Check Existing Issues" icon="search">
+
+Visit the [GitHub repository](https://github.com/example/ev-zefir) and search for similar reports.
+
+</Step>
+
+<Step title="Create New Issue" icon="plus">
+
+Click "New Issue", select template, and describe your problem with steps to reproduce.
+
+````bash
+# Example reproduction code
+curl -X POST https://api.example.com/zefir-chat \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -d '{"message": "Test crash input 😎🔥"}'
+````
+
+</Step>
+
+<Step title="Provide Logs" icon="file-text">
+
+Attach console logs or error screenshots for faster triage.
+
+</Step>
+
+<Step title="Follow Up" icon="bell">
+
+Subscribe to your issue for updates on fixes.
+
+</Step>
+
+</Steps>
+
+<Callout kind="tip">
+
+Use the `bug` or `feature` labels when filing issues to help us prioritize.
+
+</Callout>

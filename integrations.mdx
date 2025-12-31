@@ -1,0 +1,143 @@
+---
+title: Integrating Zefir with Other Tools
+description: Connect the Zefir Fun Chatbot to third-party services to enhance your experience and automate interactions.
+---
+
+## Overview
+
+Connect Zefir Fun Chatbot to your favorite tools to automate fun interactions, send custom notifications, and share chats seamlessly. Webhooks enable real-time alerts, social media links broadcast conversations, and productivity apps deliver playful reminders. Follow these guides to set up secure integrations that scale with your needs.
+
+<Columns cols={3}>
+  <Card title="Webhooks" icon="zap" href="#webhooks">
+    Receive instant notifications for chatbot events.
+  </Card>
+  <Card title="Social Media" icon="share-2" href="#social-media">
+    Link chats across platforms like Discord and Twitter.
+  </Card>
+  <Card title="Productivity Apps" icon="calendar" href="#productivity">
+    Schedule fun reminders in Slack or Google Calendar.
+  </Card>
+</Columns>
+
+## Setting Up Webhooks
+
+Webhooks let Zefir push events like new messages or user joins to your endpoint. Configure them in your Zefir dashboard at `https://dashboard.example.com/integrations/webhooks`.
+
+<Steps>
+  <Step title="Create Webhook" icon="plus">
+    Navigate to the Integrations tab. Click "New Webhook" and enter your endpoint URL, such as `https://your-webhook-url.com/zefir-events`.
+  </Step>
+  <Step title="Select Events" icon="settings">
+    Choose events like `message.received` or `user.joined`. Test the configuration with the "Send Test" button.
+  </Step>
+  <Step title="Verify Payload" icon="check-circle">
+    Handle the incoming POST request on your server. Zefir sends JSON payloads with event details.
+  </Step>
+</Steps>
+
+<CodeGroup tabs="Node.js,Python">
+  ```javascript
+  const express = require('express');
+  const app = express();
+  app.use(express.json());
+
+  app.post('/zefir-events', (req, res) => {
+    const event = req.body;
+    console.log('Zefir event:', event.type, event.data);
+    // Process notification
+    res.status(200).json({ received: true });
+  });
+
+  app.listen(3000);
+  ```
+  ```python
+  from flask import Flask, request, jsonify
+
+  app = Flask(__name__)
+
+  @app.route('/zefir-events', methods=['POST'])
+  def zefir_webhook():
+      event = request.json
+      print(f'Zefir event: {event["type"]} {event["data"]}')
+      # Process notification
+      return jsonify({'received': True}), 200
+
+  if __name__ == '__main__':
+      app.run(port=3000)
+  ```
+</CodeGroup>
+
+<Callout kind="tip">
+  Always validate the `X-Zefir-Signature` header using your webhook secret to prevent unauthorized requests.
+</Callout>
+
+## Linking with Social Media Platforms
+
+Share Zefir chats on social platforms to engage communities. Use OAuth for secure connections.
+
+<Tabs>
+  <Tab title="Discord" icon="message-circle">
+    Generate a Discord webhook URL and paste it into Zefir's social integrations panel.
+
+    ```javascript
+    // Example Discord payload from Zefir
+    {
+      "content": "New fun message in Zefir: Hello world! 🎉",
+      "username": "Zefir Bot"
+    }
+    ```
+  </Tab>
+  <Tab title="Twitter" icon="twitter">
+    Authorize Zefir via Twitter API v2. Post chat highlights automatically.
+
+    <ParamField header="Authorization" param-type="string" required="true">
+      Bearer `YOUR_TWITTER_BEARER_TOKEN`
+    </ParamField>
+  </Tab>
+</Tabs>
+
+## Integrating with Productivity Apps
+
+Enhance daily workflows with Zefir reminders in tools like Slack or Trello.
+
+```javascript
+// Slack integration example
+const slackPayload = {
+  channel: '#fun-reminders',
+  text: 'Zefir reminder: Time for a break! 😄',
+  attachments: [{ text: 'Chat with Zefir now' }]
+};
+
+// Send via webhook
+fetch('https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK', {
+  method: 'POST',
+  body: JSON.stringify(slackPayload)
+});
+```
+
+<Expandable title="Advanced Google Calendar Setup" default-open="false">
+  Use Google Apps Script to sync Zefir events.
+
+  ```javascript
+  function createZefirEvent() {
+    const event = {
+      summary: 'Zefir Fun Reminder',
+      start: { dateTime: '2024-10-01T10:00:00' }
+    };
+    Calendar.Events.insert(event, 'primary');
+  }
+  ```
+</Expandable>
+
+## Best Practices for Secure Connections
+
+- Use HTTPS endpoints only for webhooks.
+- Rotate secrets regularly in your Zefir dashboard.
+- Rate-limit incoming requests to avoid abuse.
+- Log all events but avoid storing sensitive user data.
+
+<Callout kind="alert">
+  Never expose your webhook secrets in client-side code or public repositories.
+</Callout>
+
+These integrations unlock Zefir's full potential. Start with webhooks for quick wins, then expand to social and productivity tools.
